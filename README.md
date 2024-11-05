@@ -28,8 +28,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/RRTM7Gi" data-context="false" ><a href="//imgur.com/a/RRTM7Gi"></a></blockquote>
-
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/RRTM7Gi" data-context="false" ><a href="//imgur.com/a/RRTM7Gi"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 ## Notes
 
 Describe any challenges encountered while building the app.
