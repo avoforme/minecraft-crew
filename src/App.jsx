@@ -7,8 +7,10 @@ function App() {
 
   return (
     <div>
-      <h1> Welcome to the Crewmate Creator! </h1>
-      <h3>Here is where you can create your very own set of crewmates before sending them off into space!</h3>
+      <h1> Welcome to the Minecraft player log! </h1>
+      <h3>Here is where you can save info about the people you have played Minecraft with!</h3>
+      <p>Log information about the people who you have played with and decide who to play with next time.</p>
+      <p> Save their name, if they are friendly or not, and how fast do they progress in game</p>
       <img src="../public/mobs.webp" alt="mobs" />
     </div>
   )

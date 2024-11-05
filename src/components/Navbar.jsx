@@ -9,8 +9,8 @@ const Navbar = () => {
       <nav className="side-navbar">
         <ul className="nav-links">
           <Link to={`/`}> Home </Link>
-          <Link to={`/create`}> Create crewmate </Link>
-          <Link to={`/read`}> See crewmate </Link>
+          <Link to={`/create`}> Log new player </Link>
+          <Link to={`/read`}> See all players </Link>
           {/* <Link to={`/contact`}> Contact </Link> */}
         </ul>
       </nav>

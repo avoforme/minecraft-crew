@@ -1,34 +1,34 @@
 import { supabase } from '../client';
 import { useState, useEffect } from 'react';
-
+import Card from './Card';
 const ReadCrewmate = () => {
-    const [crewmates, setCrewmates] = useState([]);
+    const [players, setplayers] = useState([]);
 
     useEffect(() => {
-        const fetchCrewmates = async () => {
+        const fetchplayers = async () => {
             const { data } = await supabase
                 .from('crewmate')
                 .select();
             
-            // Set state of crewmates
-            setCrewmates(data);
+            // Set state of players
+            setplayers(data);
         }
-        fetchCrewmates();
+        fetchplayers();
     }, []);
     
     return (
-        <div className="ReadCrewmates">
+        <div className="Readplayers">
             {
-                crewmates && crewmates.length > 0 ?
-                crewmates.map((crewmate, index) => 
+                players && players.length > 0 ?
+                players.map((player, index) => 
                     <Card 
-                        key={crewmate.id} 
-                        id={crewmate.id} 
-                        name={crewmate.name} 
-                        friendliness={crewmate.friendliness ? "Friendly" : "Not Friendly"} 
-                        speed={crewmate.speed} 
+                        key={player.id} 
+                        id={player.id} 
+                        name={player.name} 
+                        friendliness={player.friendliness ? "Friendly" : "Not Friendly"} 
+                        speed={player.speed} 
                     />
-                ) : <h2>{'No Crewmates Yet 😞'}</h2>
+                ) : <h2>{'No players Yet'}</h2>
             }
         </div>  
     );

@@ -1,8 +1,12 @@
 import { supabase } from '../client'
 import { useState, useEffect } from 'react'
+import { useParams } from "react-router-dom";
+
 
 const EditCrewmate = () => {
-    const [crewmate, setCrewmate] = useState({
+    let params = useParams();
+    let id = params.id;
+    const [player, setplayer] = useState({
         name: "",
         friendliness: false,
         speed: 0
@@ -10,26 +14,26 @@ const EditCrewmate = () => {
 
     const handleChange = (event) => {
         const { name, value, type } = event.target;
-        setCrewmate((prev) => ({
+        setplayer((prev) => ({
             ...prev,
             [name]: type === 'number' ? parseInt(value) : type === 'radio' ? value === 'true' : value,
         }));
     };
 
-    const updateCrewmate = async (event) => {
+    const updateplayer = async (event) => {
         event.preventDefault();
         await supabase
-            .from('Posts')
-            .update({name: crewmate.name, friendliness: crewmate.friendliness, speed: crewmate.speed})
+            .from('crewmate')
+            .update({name: player.name, friendliness: player.friendliness, speed: player.speed})
             .eq('id', id);
         
         window.location = "/read";
     }
 
-    const deleteCrewmate = async (event) =>{
+    const deleteplayer = async (event) =>{
         event.preventDefault();
         await supabase
-            .from('Posts')
+            .from('crewmate')
             .delete()
             .eq('id', id);
         window.location = "/read";
@@ -38,19 +42,19 @@ const EditCrewmate = () => {
 
     return (
         <div>
-            <h1>Create a New Crewmate</h1>
-            <img src="../public/mobs.webp" alt="React Logo" />
-
+            <h1>Edit a player</h1>
+            <h3>Fill out the form to edit a player</h3>
             <div>
-                <form onSubmit={createPost}>
-                    <label htmlFor="name">Name</label> <br />
+                <form>
+                    <label for="name">Name</label> <br />
                     <input 
                         type="text" 
                         id="name" 
                         name="name" 
-                        value={crewmate.name} 
+                        value={player.name} 
                         onChange={handleChange} 
-                    /><br /><br />
+                    />
+                    <br />
 
                     <label>Friendliness</label><br />
                     <label>
@@ -58,17 +62,18 @@ const EditCrewmate = () => {
                             type="radio"
                             name="friendliness"
                             value="true"
-                            checked={crewmate.friendliness === true}
+                            checked={player.friendliness === true}
                             onChange={handleChange}
                         />
                         True
                     </label>
+                    <br />
                     <label>
                         <input
                             type="radio"
                             name="friendliness"
                             value="false"
-                            checked={crewmate.friendliness === false}
+                            checked={player.friendliness === false}
                             onChange={handleChange}
                         />
                         False
@@ -80,13 +85,13 @@ const EditCrewmate = () => {
                         type="number" 
                         id="speed" 
                         name="speed" 
-                        value={crewmate.speed} 
+                        value={player.speed} 
                         onChange={handleChange} 
                     />
                     <br /><br />
                     
-                    <input type="submit" value="Submit" onClick={updateCrewmate}/>
-                    <button className="deleteButton" onClick={deleteCrewmate}>Delete</button>
+                    <input type="submit" value="Submit" onClick={updateplayer}/>
+                    <button className="deleteButton" onClick={deleteplayer}>Delete</button>
                 </form>
             </div>
         </div>

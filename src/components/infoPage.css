@@ -1,0 +1,25 @@
+/* InfoPage.css */
+.InfoPage {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .InfoPage .name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .InfoPage .friendliness {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .InfoPage .speed {
+    font-size: 18px;
+    color: #777;
+  }
+  

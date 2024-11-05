@@ -8,6 +8,7 @@ import ReadCrewmate from './components/ReadCrewmate.jsx'
 import EditCrewmate from './components/EditCrewmate.jsx'
 import NotFound from './components/NotFound.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import InfoPage from './components/infoPage.jsx'
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,11 +22,19 @@ createRoot(document.getElementById("root")).render(
             path="/create"
             element={<CreateCrewmate />}
           />
+
           <Route
             index={false}
-            path="/edit"
+            path="/edit/:id"
             element={<EditCrewmate />}
           />
+          
+          <Route
+            index={false}
+            path="/moreInfo/:id"
+            element={<InfoPage />}
+          />
+
           <Route
             index={false}
             path="/read"

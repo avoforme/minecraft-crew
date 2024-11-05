@@ -2,7 +2,7 @@ import { supabase } from '../client'
 import { useState, useEffect } from 'react'
 
 const CreateCrewmate = () => {
-    const [crewmate, setCrewmate] = useState({
+    const [player, setplayer] = useState({
         name: "",
         friendliness: false,
         speed: 0
@@ -10,7 +10,7 @@ const CreateCrewmate = () => {
 
     const handleChange = (event) => {
         const { name, value, type } = event.target;
-        setCrewmate((prev) => ({
+        setplayer((prev) => ({
             ...prev,
             [name]: type === 'number' ? parseInt(value) : type === 'radio' ? value === 'true' : value,
         }));
@@ -20,14 +20,14 @@ const CreateCrewmate = () => {
         event.preventDefault();
         await supabase
         .from('crewmate')
-        .insert({name: crewmate.name, friendliness: crewmate.friendliness, speed: crewmate.speed})
+        .insert({name: player.name, friendliness: player.friendliness, speed: player.speed})
         .select();
         window.location = "/create";
     };
 
     return (
         <div>
-            <h1>Create a New Crewmate</h1>
+            <h1>Create a New player</h1>
             <img src="../public/mobs.webp" alt="React Logo" />
 
             <div>
@@ -37,7 +37,7 @@ const CreateCrewmate = () => {
                         type="text" 
                         id="name" 
                         name="name" 
-                        value={crewmate.name} 
+                        value={player.name} 
                         onChange={handleChange} 
                     /><br /><br />
 
@@ -47,17 +47,18 @@ const CreateCrewmate = () => {
                             type="radio"
                             name="friendliness"
                             value="true"
-                            checked={crewmate.friendliness === true}
+                            checked={player.friendliness === true}
                             onChange={handleChange}
                         />
                         True
                     </label>
+                    <br />
                     <label>
                         <input
                             type="radio"
                             name="friendliness"
                             value="false"
-                            checked={crewmate.friendliness === false}
+                            checked={player.friendliness === false}
                             onChange={handleChange}
                         />
                         False
@@ -69,7 +70,7 @@ const CreateCrewmate = () => {
                         type="number" 
                         id="speed" 
                         name="speed" 
-                        value={crewmate.speed} 
+                        value={player.speed} 
                         onChange={handleChange} 
                     />
                     <br /><br />
